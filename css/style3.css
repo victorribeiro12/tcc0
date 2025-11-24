@@ -1,24 +1,86 @@
-*{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
-:root {
-  --cor-tema-header: #3b3b3b; 
+/* ================================================= */
+/* 1. VARIÁVEIS CSS E DEFINIÇÕES PADRÃO (:ROOT)      */
+/* (Consolidado com variáveis de todas as páginas) */
+/* ================================================= */
 
+:root {
+    /* --- CORES BASE GLOBAIS (Padrão: Tema Escuro Suave) --- */
+    --cor-fundo-principal: #1f1f1f;    /* Fundo da página */
+    --cor-fundo-secundario: #3b3b3b;   /* Fundo da Top Bar/Header */
+    --cor-fundo-card: #2c2c2c;         /* Fundo de Cards e Elementos Secundários */
+    
+    --cor-texto-principal: #ffffff;    /* Texto principal (white) */
+    --cor-texto-secundario: #b8b8b8;   /* Texto secundário/muted (gray) */
+    --cor-texto-sidebar: #ffffff;      /* Cor do texto dentro da Sidebar */
+    --cor-texto-link: #55cffa;         /* Cor para links/textos de destaque (skyblue) */
+    
+    /* --- VARIÁVEIS DE DESTAQUE (CUSTOMIZÁVEIS POR TEMA) --- */
+    --cor-destaque-primaria: #D13438;  /* Cor de destaque principal (ex: Bordas, Hover/Active - Red) */
+    --cor-destaque-secundaria: #FFB900;/* Laranja/Amarelo (Top Bar SENAI) */
+    --cor-borda-item: #555555;         /* Borda de Cards e Separadores (dadce0/gray) */
+
+    /* --- UTILIDADES --- */
+    --bg-hover: #4e4e4e;               /* Fundo de Hover de itens (gray/49, 49, 49) */
+    --bg-active: #666666;              /* Fundo de Item Ativo (66, 65, 65) */
+    --bg-toggle-off: #a0a0a0;          /* Cor do Toggle desativado (gray) */
 }
+
+
+/* ================================================= */
+/* 2. CLASSES DE TEMAS ESPECÍFICOS                   */
+/* ================================================= */
+
+/* --- TEMA CLARO (CLASSE: tema-claro) - REQUISITOS SENAI --- */
+.tema-claro {
+    /* Fundo e Textos Invertidos */
+    --cor-fundo-principal: #f0f0f0;    
+    --cor-fundo-secundario: #ffffff;   
+    --cor-fundo-card: #ffffff;
+    
+    --cor-texto-principal: #1f2937;
+    --cor-texto-secundario: #6b7280;
+    --cor-texto-sidebar: #1f2937;     
+    --cor-texto-link: #007bff;        
+    
+    /* Utilidades claras */
+    --bg-hover: #f3f4f6;
+    --bg-active: #e5e7eb;
+    --bg-toggle-off: #c0c0c0;
+
+    /* REQUERIMENTO SENAI */
+    --cor-borda-item: #0078D4; 
+    --cor-destaque-secundaria: #ff8c00; 
+    --cor-destaque-primaria: #007bff;
+}
+
+/* --- DEMAIS TEMAS (Apenas Destaque Primário muda) --- */
+.tema-azul-ceu { --cor-destaque-primaria: #55cffa; }
+/* ... (Incluir as outras 8 classes de tema aqui se estiverem no mesmo arquivo) ... */
+
+
+/* ================================================= */
+/* 3. APLICAÇÃO DOS ESTILOS (Página de Configurações) */
+/* ================================================= */
+
+/* Reset */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header/Body */
 header {
-  background-color: var(--cor-tema-header); 
-  
+    background-color: var(--cor-fundo-secundario); /* Corrigido para variável semântica */
 }
 body{
-    background-color: var(--cor-tema-header);
-    color: white;
-    color: wheat;
+    background-color: var(--cor-fundo-principal); /* Corrigido para variável semântica */
+    color: var(--cor-texto-principal);            /* Corrigido para variável semântica */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease;
-
 }
+
+/* Logo */
 .logo {
     margin: 10px;
     display: flex;
@@ -27,36 +89,33 @@ body{
     margin-bottom: 20px;
     gap: 10px;
 }
-
 .logo img {
     object-fit: contain;
     transition: transform 0.3s ease;
 }
-
 .logo:hover img {
     transform: scale(1.1);
 }
-
 .logo span {
     opacity: 0;
     transition: opacity 0.3s ease;
-    color: white;
+    color: var(--cor-texto-sidebar); /* Corrigido de 'white' */
     font-size: 18px;
     font-weight: bold;
     white-space: nowrap;
 }
-
 .topbar-left:hover .logo span {
     opacity: 1;
 }
 
+/* Topbar Left (Sidebar) */
 .topbar-left {
     position: fixed;
     left: 0;
     top: 0;
     height: 100vh;
     width: 70px;
-    background-color: var(--bg-primary);
+    background-color: var(--cor-fundo-secundario); /* Corrigido de var(--bg-primary) */
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -64,6 +123,11 @@ body{
     transition: width 0.3s ease, background-color 0.3s ease;
     overflow: hidden;
     z-index: 1002;
+}
+
+/* Ativa o fundo laranja da sidebar no Tema Claro */
+.tema-claro .topbar-left {
+    background-color: var(--cor-destaque-secundaria); /* Laranja SENAI */
 }
 
 .topbar-left:hover {
@@ -76,7 +140,7 @@ body{
 
 .topbar-left > div:not(.logo) {
     text-decoration: none;
-    color: white;
+    color: var(--cor-texto-sidebar); /* Corrigido de 'white' */
     font-size: 16px;
     font-weight: 500;
     transition: all 0.3s ease;
@@ -100,12 +164,12 @@ body{
 
 .topbar-left > div:not(.logo):hover {
     background-color: transparent;
-    border: 2px solid rgb(219, 45, 45);
+    border: 2px solid var(--cor-destaque-primaria); /* Corrigido de rgb(219, 45, 45) */
     border-radius: 32px;
 }
 
 .topbar-left > div.active {
-    background-color: rgb(66, 65, 65);
+    background-color: var(--bg-active); /* Corrigido de rgb(66, 65, 65) */
     border-radius: 32px;
 }
 
@@ -121,17 +185,19 @@ body{
 .topbar-left > div:not(.logo):hover img {
     transform: scale(1.2);
 }
+
+/* Topbar Links (<a>) */
 .topbar-left > a {
     text-decoration: none; 
-    color: white;        
+    color: var(--cor-texto-sidebar);      /* Corrigido de 'white' */
     font-size: 16px;
     font-weight: 500;
     transition: all 0.3s ease;
     position: relative;
     padding: 12px 15px;
     margin: 0 10px;
-    display: flex;        
-    align-items: center;  
+    display: flex;          
+    align-items: center;    
     gap: 20px;
     white-space: nowrap;
     cursor: pointer;
@@ -149,21 +215,23 @@ body{
 
 .topbar-left > a:hover {
     background-color: transparent;
-    border: 2px solid red;
+    border: 2px solid var(--cor-destaque-primaria); /* Corrigido de 'red' */
 }
 
 .topbar-left > a.active {
-    background-color: rgb(66, 65, 65);
+    background-color: var(--bg-active); /* Corrigido de rgb(66, 65, 65) */
 }
+
 .topbar-left > a span {
     opacity: 0;
     transition: opacity 0.3s ease;
-    color: white;
+    color: var(--cor-texto-sidebar); /* Corrigido de 'white' */
 }
 
 .topbar-left:hover > a span {
     opacity: 1;
 }
+
 .topbar-left > a:hover img {
     transform: scale(1.2);
 }
@@ -172,89 +240,56 @@ body{
     flex-grow: 1; 
 }
 
-.configuracao{
-    
-}
-
+/* Configurações (Main Content) */
 main.configuracoes {
     margin-left: 240px; 
     padding: 40px;
+}
 
 .container {
-    color: white;
+    color: var(--cor-texto-principal); /* Corrigido de 'white' */
     max-width: 960px; 
     margin: 0 auto; 
     animation: fadeInUp 0.5s ease forwards;
 }
-.config1{
-animation-delay: 0.1s;
-}
-.config2{
-animation-delay: 0.2s;
-}
-.config3{
-animation-delay: 0.3s;
-}
-.config4{
-animation-delay: 0.4s;
-}
-.config5{
-animation-delay: 0.5s;
-}
-.config6{
-animation-delay: 0.6s;
-}
-.config7{
-animation-delay: 0.7s;
-}
-.config8{
-animation-delay: 0.8s;
-} 
+
+/* Animações (mantidas) */
+.config1{ animation-delay: 0.1s; }
+.config2{ animation-delay: 0.2s; }
+.config3{ animation-delay: 0.3s; }
+.config4{ animation-delay: 0.4s; }
+.config5{ animation-delay: 0.5s; }
+.config6{ animation-delay: 0.6s; }
+.config7{ animation-delay: 0.7s; }
+.config8{ animation-delay: 0.8s; } 
+
+/* Cards de Configuração */
 .configs {
-    color: white;
+    color: var(--cor-texto-principal);
     background-color: transparent;
-    border: 1px solid #dadce0; 
+    border: 1px solid var(--cor-borda-item); /* Corrigido de #dadce0 */
     border-radius: 8px;
     padding: 24px;
     margin-top: 16px;
     margin-bottom: 16px; 
     transition: background-color 0.3s ease-in-out;
-    margin-bottom: 16px; 
     transition: background-color 0.2s ease-in-out;
 }
 
 .configs:hover {
-    background-color: gray; 
+    background-color: var(--bg-hover); /* Corrigido de 'gray' */
     cursor: pointer;
 }
 
-.configs a {
-    font-size: 2rem;
-    color: white;
-    display: block; 
-    text-decoration: none;
-    padding: 20px 24px;
-   
-}
+/* Regras antigas (removidas pois são redundantes com config1-8) */
+/* .configs a {} */
+/* .configs h2 {} */
+/* .configs p {} */
 
-.configs h2 {
-    color: white;
-    margin: 0 0 4px 0;
-    color: #202124; 
-    font-size: 18px;
-}
-
-.configs p {
-    font-size: 20px;
-    font:bold;
-    color: white;
-    margin: 0;
-    color: #5f6368; 
-    font-size: 14px;
-}}
+/* Cards Específicos (config1 a config8) */
 .config1, .config2, .config3, .config4, .config5, .config6, .config7, .config8{
     background-color: transparent;
-    border: 1px solid #dadce0; 
+    border: 1px solid var(--cor-borda-item); /* Corrigido de #dadce0 */
     border-radius: 8px;
     padding: 24px;
     margin-top: 16px;
@@ -262,15 +297,17 @@ animation-delay: 0.8s;
     transition: background-color 0.3s ease-in-out;
     margin-bottom: 16px; 
     transition: background-color 0.2s ease-in-out;
-
 }
+
 .config1:hover, .config2:hover, .config3:hover, .config4:hover, .config5:hover, .config6:hover, .config7:hover, .config8:hover {
-    background-color: rgb(49, 49, 49); 
+    background-color: var(--bg-hover); /* Corrigido de rgb(49, 49, 49) */
     cursor: pointer;
 }
+
+/* Links dentro dos Cards */
 .config1 a, .config2 a, .config3 a, .config4 a, .config5 a, .config6 a, .config7 a, .config8 a {
     font-size: 1rem;
-    color: white;
+    color: var(--cor-texto-principal); /* Corrigido de 'white' */
     display: block; 
     text-decoration: none;
     padding: 10px 10px;
@@ -278,30 +315,32 @@ animation-delay: 0.8s;
     justify-content: space-between;
     align-items: center;
     transition: transform 0.2s ease-out;
-    
 }
 
 .config1 a::after, .config2 a::after, .config3 a::after, .config4 a::after, .config5 a::after, .config6 a::after, .config7 a::after, .config8 a::after {
     content: '»'; 
     font-size: 1.8rem;
     font-weight: bold;
-    color: gray;
+    color: var(--cor-texto-secundario); /* Corrigido de 'gray' */
     margin-left: 20px;
 }
+
 .config1 a:hover, .config2 a:hover, .config3 a:hover, .config4 a:hover, .config5 a:hover, .config6 a:hover, .config7 a:hover, .config8 a:hover {
     transform: translateX(5px);
 }
 
+/* Parágrafos dentro dos Links */
 .config1 a p, .config2 a p, .config3 a p, .config4 a p, .config5 a p, .config6 a p, .config7 a p, .config8 a p {
     font-size: 1rem;
     font:bold;
-    color: white;
+    color: var(--cor-texto-principal); /* Corrigido de 'white' */
     margin: 0;
     display: flex;
     align-items: center;
     gap: 8px;
-}   
+} 
 
+/* Configurações 3 (Notificações) */
 .not1{
  list-style-type: none;
 }
@@ -324,25 +363,27 @@ animation-delay: 0.8s;
 }
 .config3 ul.not1 li p span { 
     text-decoration: underline;
-    color: skyblue;
+    color: var(--cor-texto-link); /* Corrigido de 'skyblue' */
     cursor: pointer;
 
 }
 .config3 h2 {
-    color: white;
+    color: var(--cor-texto-principal); /* Corrigido de 'white' */
     margin-top: 10px;
     margin-bottom: 15px;
 }
 
 .config3 h4 {
-    color: white;
+    color: var(--cor-texto-principal); /* Corrigido de 'white' */
     margin-top: 15px;
     margin-bottom: 10px;
 }
+
+/* Botão de Alternância (Toggle Button) */
 .buttonnot1{
     width: 40px;
     height: 20px;
-    background-color: gray;
+    background-color: var(--bg-toggle-off); /* Corrigido de 'gray' */
     border-radius: 20px;
     position: relative;
     border: none;
@@ -358,18 +399,20 @@ animation-delay: 0.8s;
     left: 2px;
     width: 16px;
     height: 16px;
-    background-color: white;
+    background-color: var(--cor-texto-sidebar); /* Corrigido de 'white' */
     border-radius: 50%;
     transition: transform 0.3s ease;
 }
 
 .buttonnot1.active {
-    background-color: var(--cor-tema-header);
+    background-color: var(--cor-destaque-primaria); /* Corrigido para variável de destaque */
 }
 
 .buttonnot1.active::before {
     transform: translateX(20px);
 }
+
+/* Keyframes */
 @keyframes fadeInUp {
     from {
         opacity: 0;

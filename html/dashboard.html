@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Layout Dashboard - Semântico</title>
-    <link rel="stylesheet" href="../css/style4.css">
+    <title>Dashboard - Autocademy</title>
+    <link rel="stylesheet" href="..//css/style4.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <nav class="topbar-left">
+   <header>
+    
+    <div class="topbar-left">
         <div class="logo">
             <img src="../imagens/logo.png" alt="Logo Autocademy" width="50px" height="50px">
             <span>Autocademy</span>
         </div>
         
-        <a href="../html/materias.html" class="active">
+        <a href="../html/dashboard.html" class="active">
             <img src="../imagens/iconhome.png" alt="Ícone Início" height="40" width="40">
             <span>Início</span>
         </a>
         
-        <a href="#"> <img src="../imagens/icons8-livros-96.png" alt="Ícone Materias" height="40" width="40">
+        <a href="../html/materias.html"> <img src="../imagens/icons8-livros-96.png" alt="Ícone Materias" height="40" width="40">
             <span>Materias</span>
         </a>
         
@@ -26,90 +29,167 @@
             <span>Historico</span>
         </a>
 
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-        <a href="#"> <img src="../imagens/icons8-configurações-150.png" alt="Ícone Configurações" height="40" width="40">
+        <a href="../html/config.html"> <img src="../imagens/icons8-configurações-150.png" alt="Ícone Configurações" height="40" width="40">
             <span>Configurações</span>
         </a>
-    </nav>
-
-    <div class="layout-wrapper">
+    </div>
+</header><!-- MAIN CONTENT -->
+    <main class="main-content">
+        
+        <!-- HEADER -->
         <header class="top-header">
-            <div class="search-bar">
-                <input type="text" placeholder="buscar materia">
-                <i class="fa-solid fa-magnifying-glass"></i>
+            <!-- Campo de Busca -->
+             
+            <div class="search-box">
+                <input type="text" placeholder="buscar materia" class="search-input">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
             </div>
+
+            <!-- Perfil -->
             <div class="user-profile">
-                <i class="fa-solid fa-user avatar"></i>
-                <span>Victor</span>
+                <div class="avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <span class="username">Victor</span>
             </div>
         </header>
-        <main>
-            
-            <section class="hero-section">
-                <img src="../imagens/banner.png" 
-                     alt="Banner Principal" 
-                     class="hero-image">
-            </section>
 
-            <section class="cards-section">
-                <div class="card-group">
-                    <button class="card-btn"></button>
-                    <span class="card-label">texto</span>
-                </div>
-                <div class="card-group">
-                    <button class="card-btn"></button>
-                    <span class="card-label">texto</span>
-                </div>
-                <div class="card-group">
-                    <button class="card-btn"></button>
-                    <span class="card-label">texto</span>
-                </div>
-                
-                <div class="break-row"></div>
+        <!-- CONTEÚDO SCROLLÁVEL -->
+        <div class="scroll-area">
+            <div class="content-container">
 
-                <div class="card-group">
-                    <button class="card-btn"></button>
-                    <span class="card-label">texto</span>
+                <!-- HERO BANNER -->
+                <div class="hero-section">
+                    <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop" 
+                         alt="Banner Tech" 
+                         class="hero-image">
+                    <div class="hero-overlay"></div>
                 </div>
-                <div class="card-group">
-                    <button class="card-btn"></button>
-                    <span class="card-label">texto</span>
-                </div>
-            </section>
 
-            <section class="article-section">
-                <img src="../imagens/banner.png" 
-                     alt="Imagem do artigo" 
-                     class="article-image">
-                     
-                <div class="article-text">
-                    <h2>Inserir um subtítulo</h2>
-                    <p>
-                        aaaaaaaaaaaaaaaaaaaaaa<br>
-                        aaaaaaaaaaaaaaa<br>
-                        aaaaaaaaaaaaaaaaaaaaaa<br>
-                        aaaaaaaaaaaaaaa
-                    </p>
-                </div>
-                        <img src="../imagens/banner.png" 
-                     alt="Imagem do artigo" 
-                     class="article-image">
-                     
-                <div class="article-text">
-                    <h2>Inserir um subtítulo</h2>
-                    <p>
-                        aaaaaaaaaaaaaaaaaaaaaa<br>
-                        aaaaaaaaaaaaaaa<br>
-                        aaaaaaaaaaaaaaaaaaaaaa<br>
-                        aaaaaaaaaaaaaaa
-                    </p>
-                </div>
-            </section>
-        
+        <div class="filters-wrapper">
+                    <!-- Botão Direcional Esquerda --><button class="direction-btn">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
 
-        </main>
-    </div>
+                    <!-- Lista de Filtros (Nova Estrutura) --><div class="filters-scroll">
+                        
+                        <!-- Filtro: Todos --><div class="filter-item-group active">
+                            <button class="filter-btn">
+                                <div class="filter-pill"></div>
+                            </button>
+                            <span class="filter-text">Todos</span>
+                        </div>
+                        
+                        <!-- Filtro: Matemática --><div class="filter-item-group">
+                            <button class="filter-btn">
+                                <div class="filter-pill"></div>
+                            </button>
+                            <span class="filter-text">Matemática</span>
+                        </div>
+                        
+                        <!-- Filtro: História --><div class="filter-item-group">
+                            <button class="filter-btn">
+                                <div class="filter-pill"></div>
+                            </button>
+                            <span class="filter-text">História</span>
+                        </div>
+                        
+                        <!-- Filtro: Geografia --><div class="filter-item-group">
+                            <button class="filter-btn">
+                                <div class="filter-pill"></div>
+                            </button>
+                            <span class="filter-text">Geografia</span>
+                        </div>
+                        
+                        <!-- Filtro: Física --><div class="filter-item-group">
+                            <button class="filter-btn">
+                                <div class="filter-pill"></div>
+                            </button>
+                            <span class="filter-text">Física</span>
+                        </div>
+                        
+                        <!-- Filtro: Química --><div class="filter-item-group">
+                            <button class="filter-btn">
+                                <div class="filter-pill"></div>
+                            </button>
+                            <span class="filter-text">Química</span>
+                        </div>
 
+                <!-- GRID -->
+                <div class="content-grid">
+                    
+                    <!-- 1. CARD SUPERIOR ESQUERDO -->
+                    <article class="card-container">
+                        <div class="card-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop" 
+                                 class="card-image">
+                        </div>
+                        <div>
+                            <h2 class="card-title">Inserir um subtítulo</h2>
+                            <p class="card-text">
+                                aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- 2. COLUNA DIREITA -->
+                    <article class="text-column">
+                        <h2 class="card-title">Inserir um subtítulo</h2>
+                        <div class="text-list">
+                            <p>aaaaaaaaaaaaaaaaaaaaaaaa</p>
+                            <p>aaaaaaaaaaaaaaa</p>
+                            <p>aaaaaaaaaaaaaaaaaaaaaa</p>
+                            <p>aaaaaaaaaaaaaaa</p>
+                        </div>
+                    </article>
+
+                    <!-- 3. CARD INFERIOR ESQUERDO (REPETIDO) -->
+                    <article class="card-container">
+                        <div class="card-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop" 
+                                 class="card-image">
+                        </div>
+                        <div>
+                            <h2 class="card-title">Inserir um subtítulo</h2>
+                            <p class="card-text">
+                                aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- 4. ESPAÇO INFERIOR DIREITO (CORTE) -->
+                    <div class="bottom-cut-element">
+                        <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+
+                </div> <!-- Fim Grid -->
+
+            </div>
+        </div>
+    </main>
+    
+    <!-- Script Lógica Ativo (para interação de clique) -->
+    <script>
+        const links = document.querySelectorAll('.nav-link');
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                links.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+
+    <script>
+(function() {
+    const temaSalvo = localStorage.getItem('temaPainel');
+    if (temaSalvo) {
+      document.documentElement.style.setProperty('--cor-tema-header', temaSalvo);
+    }
+  })();
+</script>
+<script src="tema.js"></script>
 </body>
 </html>
